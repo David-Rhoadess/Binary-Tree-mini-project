@@ -12,7 +12,25 @@ public class Leaf extends TreeNode{
   /**
    * The String contained in this Leaf
    */
-  String ch;
+  String str;
+
+
+  // +--------------+------------------------------------------------
+  // | Constructors |
+  // +--------------+
+
+  /**
+   * Creates a new Leaf with the given String
+   */
+  Leaf(String str) {
+    this.str = str;
+  } // Leaf(String str)
+
+  /**
+   * Creates a new, empty Leaf with the given String
+   */
+  Leaf() {
+  } // Leaf()
 
   
-  } // leaf
+} // leaf

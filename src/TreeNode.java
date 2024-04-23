@@ -18,6 +18,25 @@ public class TreeNode {
      * The subtree to the left of this node
      */
     TreeNode right;
+
+  // +--------------+------------------------------------------------
+  // | Constructors |
+  // +--------------+
+
+  /**
+   * Creates a new TreeNode with the given subtrees
+   */
+  TreeNode(TreeNode left, TreeNode right) {
+    this.left = left;
+    this.right = right;
+  } // TreeNode(TreeNode left, TreeNode right)
+
+  /**
+   * Creates a new empty TreeNode
+   */
+  TreeNode() {
+  } // TreeNode()
+  
   
     
-  } // TreeNode
+} // TreeNode
