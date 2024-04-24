@@ -6,3 +6,5 @@ Github: https://github.com/David-Rhoadess/Linked-List-mini-project/blob/main/src
 
 Aknowledgments: 
 https://stackoverflow.com/questions/541749/how-to-determine-an-objects-class referenced for a refresher on instanceOF
+
+https://www.baeldung.com/convert-file-to-input-stream referenced for a refresher on FileInputStream

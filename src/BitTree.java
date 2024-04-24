@@ -1,3 +1,7 @@
+import java.io.PrintWriter;
+import java.io.InputStream;
+import java.util.Scanner;
+
 /**
  * A binary tree intended to store mappings from bits to values
  * @author: David Rhoades 
@@ -41,7 +45,7 @@ public class BitTree {
     }
 
     TreeNode cur = this.tree;
-    for (int i = 0; i < bits.length(); i++) {
+    for (int i = 0; i < bits.length() - 1; i++) {
       cur = nextBit(bits.charAt(i), cur);
     } // for
 
@@ -81,7 +85,7 @@ public class BitTree {
     TreeNode cur = this.tree;
     for (int i = 0; i < bits.length(); i++) {
       if (cur == null) {
-        throw new Exception("Invalid input");
+        throw new Exception("Invalid input path");
       }
       if (bits.charAt(i) == '0') {
         cur = cur.left;
@@ -92,8 +96,47 @@ public class BitTree {
         throw new Exception("Invalid input bit");
       } // else
     } // for
-    return ((Leaf)cur).str;
+    if (cur instanceof Leaf) {
+      return ((Leaf)cur).str; 
+    } else {
+      throw new Exception("No set value for this path");
+    } // else
   } // get
+
+  /**
+   * Prints out the contents of the tree is CSV format
+   */
+  void dump(PrintWriter pen) {
+    dumpHelper(this.tree, "", pen);
+  }
+
+  /**
+   * Recursive helper for dump method
+   */
+  void dumpHelper(TreeNode cur, String curStr, PrintWriter pen) {
+    if (cur == null) {
+      return;
+    } else if (cur instanceof Leaf) {
+      pen.println(curStr + "," + ((Leaf)cur).str);
+    } else {
+      dumpHelper(cur.left, curStr + "0", pen);
+      dumpHelper(cur.right, curStr + "1", pen);
+    } // else
+  } // dump
+
+  void load(InputStream source) throws Exception{
+    Scanner input = new Scanner(source);
+    String[] inStrings;
+    while(input.hasNext()) {
+      inStrings = input.nextLine().split(",");
+      if(inStrings.length != 2) {
+        input.close();
+        throw new Exception("invalid load input");
+      }
+      this.set(inStrings[0], inStrings[1]);
+    }
+    input.close();
+  } // load
 
 } // BitTree
 
