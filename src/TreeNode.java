@@ -37,6 +37,4 @@ public class TreeNode {
   TreeNode() {
   } // TreeNode()
   
-  
-    
 } // TreeNode

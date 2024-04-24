@@ -8,5 +8,8 @@ import java.io.PrintWriter;
 public class BrailleASCII {
   public static void main(String[] args) throws Exception{
     PrintWriter pen = new PrintWriter(System.out, true);
+    BrailleASCIITables test = new BrailleASCIITables();
+    test.brToUni.dump(pen);
+    pen.println("here");
   } // main
 }
