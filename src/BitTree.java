@@ -39,6 +39,9 @@ public class BitTree {
   // | Methods |
   // +---------+
 
+  /**
+   * Maps the given binary String to value
+   */
   void set(String bits, String value) throws Exception{
     if (bits.length() != this.maxDepth - 1) {
       throw new Exception("Incorret number of input bits");
@@ -77,6 +80,10 @@ public class BitTree {
     return cur;
   } // nextBit
 
+
+  /**
+   * returns the value aassociated with the given bit String, if there is no such value, throws an Exception
+   */
   String get(String bits) throws Exception{
     if (bits.length() != this.maxDepth - 1) {
       throw new Exception("Incorret number of input bits");

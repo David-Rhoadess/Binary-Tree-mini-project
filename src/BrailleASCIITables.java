@@ -1,4 +1,3 @@
-import java.io.PrintWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -37,16 +36,38 @@ public class BrailleASCIITables {
 
   BrailleASCIITables() throws FileNotFoundException, Exception {
     this.charToBr = new BitTree(8);
-    this.charToBr.load(new FileInputStream(new File("src\\ASCIItoBraille.txt")));
+    this.charToBr.load(new FileInputStream(new File("src/ASCIItoBraille.txt")));
 
     this.brToChar = new BitTree(6);
-    this.brToChar.load(new FileInputStream(new File("src\\BrailletoASCII.txt")));
+    this.brToChar.load(new FileInputStream(new File("src/BrailletoASCII.txt")));
 
     this.brToUni = new BitTree(6);
-    this.brToUni.load(new FileInputStream(new File("src\\BrailletoUnicode.txt")));
-  }
+    this.brToUni.load(new FileInputStream(new File("src/BrailletoUnicode.txt")));
+  } // BrailleASCIITables
 
   // +---------+------------------------------------------------------
   // | Methods |
   // +---------+
+
+  /**
+   * Converts an ASCII character to a string of bits representing the corresponding braille character
+   */
+  String toBraille(char letter) throws Exception {
+    return this.charToBr.get("0" + Integer.toBinaryString(letter)); // 0 added becasuse toBinaryString removes the leading 0
+  } // toBraille
+
+  /**
+   * Converts a string of bits representing a braille character to the corresponding ASCII character
+   */
+  String toASCII(String bits) throws Exception {
+    return this.brToChar.get(bits);
+  } // toASCII
+
+  /**
+   * Converts a string of bits representing a braille character to the corresponding Unicode braille character for those bits. You need only support six-bit braille characters
+   */
+  String toUnicode(String bits) throws Exception {
+    return this.brToUni.get(bits);
+  } // toUnicode
+
 } // BrailleASCIITables

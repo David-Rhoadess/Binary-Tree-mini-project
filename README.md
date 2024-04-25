@@ -8,3 +8,6 @@ Aknowledgments:
 https://stackoverflow.com/questions/541749/how-to-determine-an-objects-class referenced for a refresher on instanceOF
 
 https://www.baeldung.com/convert-file-to-input-stream referenced for a refresher on FileInputStream
+
+https://stackoverflow.com/questions/5593401/binary-representation-in-java 
+referenced for a refresher on toBinaryString
